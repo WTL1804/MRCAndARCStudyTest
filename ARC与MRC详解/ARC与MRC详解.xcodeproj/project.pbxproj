@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8499EAF524BD38C600C13FCE /* NSObject+whenRetained.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499EAF424BD38C600C13FCE /* NSObject+whenRetained.m */; };
 		84E1700824BBF8510023249A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E1700724BBF8510023249A /* main.m */; };
 		84E1701024BBF8CB0023249A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E1700F24BBF8CB0023249A /* Person.m */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8499EAF324BD38C600C13FCE /* NSObject+whenRetained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+whenRetained.h"; sourceTree = "<group>"; };
+		8499EAF424BD38C600C13FCE /* NSObject+whenRetained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+whenRetained.m"; sourceTree = "<group>"; };
 		84E1700424BBF8510023249A /* ARC与MRC详解 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ARC与MRC详解"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E1700724BBF8510023249A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84E1700E24BBF8CB0023249A /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -63,6 +66,8 @@
 				84E1700724BBF8510023249A /* main.m */,
 				84E1700E24BBF8CB0023249A /* Person.h */,
 				84E1700F24BBF8CB0023249A /* Person.m */,
+				8499EAF324BD38C600C13FCE /* NSObject+whenRetained.h */,
+				8499EAF424BD38C600C13FCE /* NSObject+whenRetained.m */,
 			);
 			path = "ARC与MRC详解";
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			files = (
 				84E1701024BBF8CB0023249A /* Person.m in Sources */,
 				84E1700824BBF8510023249A /* main.m in Sources */,
+				8499EAF524BD38C600C13FCE /* NSObject+whenRetained.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
