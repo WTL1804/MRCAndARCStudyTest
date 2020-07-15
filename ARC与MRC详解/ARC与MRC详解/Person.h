@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Person : NSObject
 
 
-- (id)test;
++ (id)test;
++ (id)alloTest;
++ (id)ttttt;
 
 @end
 

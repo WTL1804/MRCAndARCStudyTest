@@ -10,7 +10,10 @@
 #import "Person.h"
 #import "NSObject+whenRetained.h"
 #import "objc/runtime.h"
+extern void _objc_autoreleasePoolPrint(void);
+
 int main(int argc, const char * argv[]) {
+    //ARC无效
    
     //这样并不会报错，虽然相当于多递减了对象，但是系统的自动释放池不知何时释放，此时后release，obj的引用计数应等于0，即将调用delloc方法。
     //当应用程序结束后，对象的delloc方法可能不会被调用，因为系统已经清理了当前程序进程的内存。
@@ -37,7 +40,6 @@ int main(int argc, const char * argv[]) {
 //    [person release];
 //
 //    NSLog(@"%ld", [person retainCount]);
-    NSObject *obj = [[NSObject alloc] init];
     //ARC
     //有文档说这样会立即释放：【尽管在初始赋值之后使用了字符串，但在赋值时没有对字符串对象的其他强引用; 因此，它立即被释放。log 语句显示 string 的值为 null。（在这种情况下，编译器会提供警告。】
     //但事实并非如此，实际上和MRC的方法一样，
@@ -46,7 +48,85 @@ int main(int argc, const char * argv[]) {
 //    NSString * __weak string = [[NSString alloc] initWithFormat:@"First Name: %@", str];
 //    NSLog(@"string: %@", string);
 //
+//生成并持有自己的autorelease池。
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//    Person *person =[[Person alloc] init];
+//    [person autorelease];
+//    [pool drain];
+    
+    //arc有效
+    //强引用对象会在超出变量作用域后自动释放
+//    Person *person = [[Person alloc] init];
+//    [person test];
+    
+    //自动赋值为nil
+//    id __strong obj0 = nil;
+//    id __weak obj1;
+//    id __autoreleasing obj2;
+//    NSLog(@"%@ %@ %@", obj0, obj1, obj2);
+//  弱引用不持有对象，NSObject对象会被销毁。
+// id __weak obj = [NSObject alloc] init];
+    //obj持有对象，obj2弱引用对象obj。此时NSObject对象被obj强引用。
+//    id __strong obj = [[NSObject alloc] init];
+//    id __weak  obj2 = obj;
+//    NSLog(@"%@", obj2);
 
-   
+    
+    //如果不是以alloc/new/copy/mutableCopy开头的方法，就自动注册到释放池中
+//    @autoreleasepool {
+//        id obj = [NSMutableArray array];
+//        NSLog(@"====%p", obj);
+//    _objc_autoreleasePoolPrint();
+//    }
+    
+    
+////    例子1
+//    id __weak obj1 = nil;
+//        {
+//            id  obj0 = [NSMutableArray array];
+//            [obj0 addObject:[[Person alloc] init]];
+//            obj1 = obj0;
+//            NSLog(@"obj0 = %@", obj0);
+//        }
+//    _objc_autoreleasePoolPrint();
+//        NSLog(@"obj1 = %@", obj1);
+    
+//    例子2
+//    id __weak obj1 = nil;
+//        {
+//            id  obj0 = [[NSMutableArray alloc]init];
+//            [obj0 addObject:@"obj"];
+//            obj1 = obj0;
+//            NSLog(@"obj0 = %@", obj0);
+//        }
+//            _objc_autoreleasePoolPrint();
+//        NSLog(@"obj1 = %@", obj1);
+  
+    //例子
+             {
+//                 id  obj0 = [NSMutableArray array];
+//                    NSLog(@"%@",obj0);
+//                 id  obj1 = [NSMutableArray array];
+//                 id  obj2 = [NSMutableArray array];
+//                 id  obj3 = [NSMutableArray array];
+                  id  obj0 = [NSArray array];
+                  id  obj1 = [NSArray array];
+                  id  obj2 = [NSArray array];
+                  id  obj3 = [NSArray array];
+
+             }
+         _objc_autoreleasePoolPrint();
+    //这个打印值为2。
+//    NSObject *obj = [[NSObject alloc] init];
+//    id __weak weakObj = obj;
+//
+//    NSLog(@"obj0=%d", _objc_rootRetainCount(weakObj));
+
+    
+    
+    
+    
+    
+    
     return 0;
 }
