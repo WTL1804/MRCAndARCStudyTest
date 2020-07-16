@@ -13,6 +13,16 @@
 extern void _objc_autoreleasePoolPrint(void);
 
 int main(int argc, const char * argv[]) {
+    
+    
+//    NSObject *obj = [[NSObject alloc] init];
+//    [obj release];
+//
+//}
+//
+    
+    
+    
     //ARC无效
    
     //这样并不会报错，虽然相当于多递减了对象，但是系统的自动释放池不知何时释放，此时后release，obj的引用计数应等于0，即将调用delloc方法。
@@ -102,31 +112,36 @@ int main(int argc, const char * argv[]) {
 //            _objc_autoreleasePoolPrint();
 //        NSLog(@"obj1 = %@", obj1);
   
-    //例子
-             {
-//                 id  obj0 = [NSMutableArray array];
-//                    NSLog(@"%@",obj0);
+//    例子
+//                {
+                // 书上说会跳过注册pool的步骤。
+//                 id __strong obj0 = [NSMutableArray array];
+                 //   NSLog(@"%p",obj0);
+                // NSLog(@"%p", [NSMutableArray array]);
 //                 id  obj1 = [NSMutableArray array];
 //                 id  obj2 = [NSMutableArray array];
 //                 id  obj3 = [NSMutableArray array];
-                  id  obj0 = [NSArray array];
-                  id  obj1 = [NSArray array];
-                  id  obj2 = [NSArray array];
-                  id  obj3 = [NSArray array];
-
-             }
-         _objc_autoreleasePoolPrint();
-    //这个打印值为2。
-//    NSObject *obj = [[NSObject alloc] init];
-//    id __weak weakObj = obj;
-//
-//    NSLog(@"obj0=%d", _objc_rootRetainCount(weakObj));
+//                  id  obj0 = [NSArray array];
+//                  id  obj1 = [NSArray array];
+//                  id  obj2 = [NSArray array];
+//                  id  obj3 = [NSArray array];
+       // _objc_autoreleasePoolPrint();
+//             }
+//        _objc_autoreleasePoolPrint();
 
     
     
-    
-    
-    
-    
+   // 使用weak变量或者将weak变量赋值给其他对象会注册到pool ARC无效时
+    NSObject *obj = [[NSObject alloc] init];
+    id __weak weakObj = obj;
+    NSLog(@"%@", weakObj);
+    NSLog(@"%@", weakObj);
+    NSLog(@"%@", weakObj);
+    NSLog(@"%@", weakObj);
+     _objc_autoreleasePoolPrint();
+//    id obj = [[NSObject alloc] init];
+    //NSLog(@"obj0=%d", _objc_rootRetainCount(weakObj));
+   
+
     return 0;
 }

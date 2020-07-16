@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 @implementation NSObject (whenRetained)
 //- (void)swizzle {
-//    NSLog(@"123");
+//     NSLog(@"123");
 //    [self swizzle];
 ////    NSLog(@"123");
 //}
