@@ -12,7 +12,7 @@
 #import "objc/runtime.h"
 extern void _objc_autoreleasePoolPrint(void);
 
-int main(int argc, const char * argv[]) {
+//int main(int argc, const char * argv[]) {
     
     
 //    NSObject *obj = [[NSObject alloc] init];
@@ -132,16 +132,66 @@ int main(int argc, const char * argv[]) {
     
     
    // 使用weak变量或者将weak变量赋值给其他对象会注册到pool ARC无效时
-    NSObject *obj = [[NSObject alloc] init];
-    id __weak weakObj = obj;
-    NSLog(@"%@", weakObj);
-    NSLog(@"%@", weakObj);
-    NSLog(@"%@", weakObj);
-    NSLog(@"%@", weakObj);
-     _objc_autoreleasePoolPrint();
+//    NSObject *obj = [[NSObject alloc] init];
+//    @autoreleasepool {
+//    id __weak weakObj = obj;
+//    NSLog(@"%@", weakObj);
+//    NSLog(@"%@", weakObj);
+//    NSLog(@"%@", weakObj);
+//    NSLog(@"%@", weakObj);
+//    NSLog(@"%@", weakObj);
+//        _objc_autoreleasePoolPrint();
+//    }
+//     _objc_autoreleasePoolPrint();
 //    id obj = [[NSObject alloc] init];
     //NSLog(@"obj0=%d", _objc_rootRetainCount(weakObj));
-   
+//        Person *person = [Person alloTest];
+          
+//    NSObject * __autoreleasing obj = [[NSObject alloc] init];
+//     NSObject * __autoreleasing obj2 = [[NSObject alloc] init];
+//     NSObject * __autoreleasing obj3 = [[NSObject alloc] init];
+//     NSObject * __autoreleasing obj4 = [[NSObject alloc] init];
+//    NSString * __autoreleasing obj = @"idjlajdlakdkldajdklajdkdaljdaj";
+//    NSString * __autoreleasing obj2 = [[NSString alloc] init];
+//    NSString * __autoreleasing obj3 = [[NSString alloc] init];
+//    NSObject * __autoreleasing obj4 = [[NSObject alloc] init];
+    
+//    NSMutableString * __autoreleasing obj1 = [[NSMutableString alloc] init];
+//    NSMutableString * __autoreleasing obj2 = [[NSMutableString alloc] init];
+//    NSMutableString * __autoreleasing obj3 = [[NSMutableString alloc] init];
+    
+//          _objc_autoreleasePoolPrint();
 
-    return 0;
+    //内存布局
+    
+   
+//}
+//int a ;
+//int b = 0;
+//int main (void) {
+//    static int c = 0;
+//    int d;
+//    int e = 0;
+//    static int g;
+//    NSString *string = @"ads";
+//    NSObject *f = [[NSObject alloc] init];
+//    NSLog(@"未初始化的全局变量：%p", &a);
+//    NSLog(@"已初始化的全局变量：%p", &b);
+//    NSLog(@"已初始化的静态变量：%p", &c);
+//    NSLog(@"未初始化的静态变量：%p", &g);
+//    NSLog(@"未初始化的自动变量：%p", &d);
+//    NSLog(@"已初始化的静态变量：%p", &e);
+//    NSLog(@"alloc分配的对象：%p %@", f, f);
+//    NSLog(@"字符串常量%p", string);
+//
+//    return 0;
+//}
+
+int main (void) {
+    NSString *a = [[NSString alloc] initWithFormat:@"a"];
+    NSString *b = [NSString stringWithFormat:@"b"];
+    NSLog(@"%p %p ", a, b);
 }
+
+
+

@@ -36,7 +36,7 @@
     NSLog(@"delloc");
 }
 + (id)alloTest {
-    id obj = [[NSObject alloc] init];
-    return obj;
+    
+    return [[NSMutableArray alloc] init];
 }
 @end
